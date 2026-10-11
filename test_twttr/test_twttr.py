@@ -6,15 +6,6 @@ a str as input and returns that same str but with all vowels (A, E, I, O, and U)
 import re
 
 
-twitter = input("Input: ")
-
-twttr = re.sub(r'[a,e,i,o,u,A,E,I,O,U]','', twitter)
-
-print(twttr)
-'''
-import re
-
-
 def main():
 
     word = input("Input: ")
@@ -29,5 +20,15 @@ def shorten(word):
 
 if __name__ == "__main__":
     main()
+'''
+
+import twttr
+
+def test_twttr():
+    if shorten("hello") != "hll":
+        print("shorten did not return hll")
+    if shorten("twitter") != "twttr":
+        print("shorten did not return twttr")
+
 
 

@@ -13,8 +13,8 @@ If, though, X or Y is not an integer, X is greater than Y, or Y is 0, instead pr
 
 def main():
     fraction = input("Fractions: ").strip()
-    n, d= convert(fraction)
-    percent = gauge(n, d)
+    percent= convert(fraction)
+    percent = gauge(percent)
     print(percent)
 
 
@@ -23,14 +23,15 @@ def convert(fraction):
         nom, delim = fraction.split("/")
         n = int(nom)
         d = int(delim)
-        return n, d
+        percent = [n, d]
+        if percent[0] >= 0 and percent[1] >= 1 and percent[0] <= percent[1]:
+            p = round(int(percent[0]) / int(percent[1]) * 100)
+            percent = int(p)
+        return percent
     except(ValueError, ZeroDivisionError):
         pass
 
-def gauge(n, d):
-    if n >= 0 and d >= 1 and n <= d:
-        p = round(int(n) / int(d) * 100)
-        percent = int(p)
+def gauge(percent):
         if percent >= 99:
             return("F")
         elif percent <= 1:
