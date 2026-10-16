@@ -11,17 +11,20 @@ but you may not import any other libraries. You’re welcome, but not required, 
 '''
 
 import re
-import sys
 
 def main():
-    print(count(input("Text: ")))
-
+    s = input("Text: ")
+    c = count(s)
+    print(c)
 
 def count(s):
+    ums = re.findall(r"\bum\b[,.?!;:]?", s, re.IGNORECASE)
+    c = 0 
+    for um in ums:
+        c += 1 
 
-
+    return c
 
 
 if __name__ == "__main__":
     main()
-
