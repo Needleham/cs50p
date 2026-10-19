@@ -8,11 +8,40 @@ In other words, even if the user runs the program at noon, assume that it’s ac
 Use datetime.date.today to get today’s date, per docs.python.org/3/library/datetime.html#datetime.date.today.
 '''
 
-from datetime import date
+import datetime
+import inflect
+import sys
+
 
 def main():
+    dob = input("Date of Birth: ").strip()
+    time = conversion(dob)
+    
+    print(time)
+
+def conversion(dob):
+    try:
+        c = datetime.date.today()
+
+        year, month, day = dob.split("-")
+        year = int(year)
+        month = int(month)
+        day = int(day)
+
+        p = datetime.date(year=year, month=month, day=day)
+        diff = c - p
+        minutes = round(diff.total_seconds() / 60)
 
 
+        # Convert to words
+        w = inflect.engine()
+
+        words = w.number_to_words(minutes, andword='').capitalize()
+
+        return (f"{words} minutes")
+
+    except ValueError:
+        sys.exit("Invalid Date")
 
 if __name__ == "__main__":
     main()
