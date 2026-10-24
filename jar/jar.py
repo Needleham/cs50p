@@ -13,21 +13,45 @@ size should return the number of cookies actually in the cookie jar, initially 0
 '''
 class Jar:
     def __init__(self, capacity=12):
-
+        if capacity >= 0:
+            self._capacity = capacity
+        else:
+            raise ValueError
+        
+        self._size = 0
 
     def __str__(self):
-
+        n = "🍪"
+        return self.size * n
 
     def deposit(self, n):
-
+        if self.size + n > self.capacity:
+            raise ValueError
+        else:
+            self._size += n
 
     def withdraw(self, n):
+        if (self.size - n) < 0:
+            raise ValueError
+        else:
+            self._size -= n
 
     @property
     def capacity(self):
+        return self._capacity
 
 
     @property
     def size(self):
+        return self._size 
 
+jar1 = Jar(5)
+jar2 = Jar(10)
 
+jar1.deposit(3)
+jar2.deposit(9)
+
+jar2.deposit(9)
+
+print(jar1)
+print(jar2)
