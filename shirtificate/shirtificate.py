@@ -9,6 +9,7 @@ class PDF(FPDF):
         self.add_page()
         self.image("shirtificate.png", x=0, y=0, w=0)
         self.set_font("helvetica", style="B", size=28)
+        self.set_text_color(168)
         self.cell(w=0, h=150, text=f"{self.slogan}", border=0, align="C")
 
 def slogan_gen():

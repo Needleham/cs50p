@@ -45,13 +45,3 @@ class Jar:
     def size(self):
         return self._size 
 
-jar1 = Jar(5)
-jar2 = Jar(10)
-
-jar1.deposit(3)
-jar2.deposit(9)
-
-jar2.deposit(9)
-
-print(jar1)
-print(jar2)
